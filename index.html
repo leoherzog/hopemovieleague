@@ -198,26 +198,26 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
     if (now.isBefore(leagueStart)) {
       $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league begins ' + leagueStart.fromNow() + '!');
-      $('#countdown-bar').addClass('bg-success progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+      $('#countdown-bar').addClass('bg-info progress-bar-animated').removeClass('bg-warning bg-success').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
       console.log("Choices are locked in");
       $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
-      $('#countdown-bar').addClass('bg-success').removeClass('progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
       console.log("Choices are locked in");
       $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates</a>.');
-      $('#countdown-bar').addClass('bg-success').removeClass('progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');    
     } else { // during open period. show countdown.
       console.log("Counting down to deadline on Friday");
       $('#countdown').html('<span class="far fa-hourglass-half"></span> Deadline for your picks this week is ' + deadline.fromNow() + '!');
       var totalTimeOpenWindow = deadline.diff(open);
       var timeElapsed = now.diff(open);
-      var percentageRemaining = (timeElapsed / totalTimeOpenWindow) * 100;
-      $('#countdown-bar').addClass('progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageRemaining).css('width', percentageRemaining + '%');
+      var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
+      $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success bg-info').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
     }
 
-    setTimeout(tick, 1000);
     console.timeEnd("Tick");
+    setTimeout(tick, 1000);
   }
   </script>
 
