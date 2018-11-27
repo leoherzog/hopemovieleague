@@ -84,7 +84,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 <body>
 
   <div class="navbar navbar-expand-lg navbar-dark bg-primary" role="navigation">
-    <a class="navbar-brand mx-auto" href="https://fantasymovieleague.com/league/35725/" target="_blank" style="cursor:default"><span class="fal fa-film-alt"></span> Hope College Unofficial Fantasy Movie League</a>
+    <a class="navbar-brand mx-auto" href="https://fantasymovieleague.com/league/35725/" target="_blank" style="cursor:default"><span class="fal fa-film-alt fa-fw"></span> Hope College Unofficial Fantasy Movie League</a>
   </div>
 
   <section id="allcontent" data-type="background">
@@ -101,14 +101,14 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
           </ul>
         </p>
         <p>
-          <a class="btn btn-primary btn-lg btn-block" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join the League!  <span class="fas fa-external-link"></span></a>
+          <a class="btn btn-primary btn-lg btn-block" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join the League! <span class="fas fa-external-link fa-fw"></span></a>
         </p>
       </div>
     </div>
 
     <div id="thisweek" class="container">
       <div class="card text-white bg-primary mb-3">
-        <div class="card-header">This Week</div>
+        <div class="card-header"><span class="far fa-calendar-alt fa-fw"></span> This Week</div>
         <div class="card-body">
           <h4 id="countdown" class="card-title">Checking...</h4>
           <div class="progress">
@@ -131,7 +131,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
     <div id="faq" class="container">
       <div class="card bg-light mb-3">
-        <div class="card-header">FAQ</div>
+        <div class="card-header"><span class="far fa-question-circle fa-fw"></span> FAQ</div>
         <div class="card-body">
           <h4 class="card-title">Who can join <a class="text-primary" href="https://fantasymovieleague.com/league/35725/" target="_blank">the Hope College league?</a></h4>
           <p class="card-text">Anyone! Faculty, Staff, Students, Alumni, Parents, Friends, whoever. The "join" button above should let you in,
@@ -147,7 +147,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
           <h4 class="card-title">How do I make my picks?</h4>
           <div class="container mb-0">
             <div class="row">
-              <div class="col-lg-7 mb-2 pl-0">
+              <div class="col-lg-6 mb-2 pl-0 align-self-center">
                 <p class="card-text">Either use the website, <a class="text-primary" href="https://fantasymovieleague.com/league/35725" target="_blank">fantasymovieleague.com</a>, or download the mobile app:</p>
               </div>
               <div class="col-lg-2 mb-2">
@@ -197,19 +197,19 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     // countdown to the start
     var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
     if (now.isBefore(leagueStart)) {
-      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league starts ' + leagueStart.fromNow() + '! <a class="btn btn-primary" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join Now  <span class="fas fa-external-link"></span></a>');
+      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Winter league starts ' + leagueStart.from(now) + '!  <a class="btn btn-primary" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join Now <span class="fas fa-external-link fa-fw"></span></a>');
       $('#countdown-bar').addClass('bg-info progress-bar-animated').removeClass('bg-warning bg-success').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
       console.log("Choices are locked in");
-      $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
+      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
       $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
       console.log("Choices are locked in");
-      $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates</a>.');
+      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates</a>.');
       $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');    
     } else { // during open period. show countdown.
       console.log("Counting down to deadline on Friday");
-      $('#countdown').html('<span class="far fa-hourglass-half"></span> Deadline for your picks this week is ' + deadline.fromNow() + '!');
+      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks this week is ' + deadline.from(now) + '!');
       var totalTimeOpenWindow = deadline.diff(open);
       var timeElapsed = now.diff(open);
       var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
