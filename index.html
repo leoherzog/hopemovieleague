@@ -59,7 +59,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       margin-bottom: 8vh;
     }
 
-    .btn {
+    .btn-block {
       font-size: 110%;
     }
     </style>
@@ -197,7 +197,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     // countdown to the start
     var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
     if (now.isBefore(leagueStart)) {
-      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league starts ' + leagueStart.fromNow() + '! Join now.');
+      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league starts ' + leagueStart.fromNow() + '! <a class="btn btn-primary" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join Now  <span class="fas fa-external-link"></span></a>');
       $('#countdown-bar').addClass('bg-info progress-bar-animated').removeClass('bg-warning bg-success').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
       console.log("Choices are locked in");
