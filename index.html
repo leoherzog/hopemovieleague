@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+                         -sdNmNNmy/`
+                       .dMo.  :/.+mN+
+                      oMh.   :MM+  oMh.
+                    -mN/      +MM+  -dN+
+                  `sMy`        dMMo   oMd.
+                 :mm:          `mMM/   .dMo
+               `yMs`            -MMM+    +Nd-
+              /Nm-               sMMM+    .hMo
+            .hMo                  yMMM/ .ydhmMd-
+           +Nd.                   `mMMM/oMoysMMMo
+         -dN+                      .NMMMNMMy./MyNd-
+        oMh.                     -+hNMMMM+yNyyM:`yMo
+      -mN/                   -+yNMMdo+MMMm``::`   /Nm-
+    `sMNsosd:            .+yNMMms/`   /MMMh        `yMs
+   :mm:sMMMM         ./ymMMNh+.        /MMMs         /Nm-
+ `yMs `yMMMM`    ./ymMMMMMdyhhyso/:.-/+ oMMM/         `yMs`
+-Nd- .mMMMMM.`/smMMMNy/.hMMMMMMMMMMMNy-  /MMN.          /Nm-
+mm`  dMMMMMmmMMMMdo-   `dMMMMMMMMMMh`     /MMm.          .Mm
+Mh   hMMMMMMMMMMMNNmmNMMMMMMMMMMMN/        +MMy           NM
+yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
+ sNy:` .+ydNMMMMMNdyo/-`  smho.              +h+      `/hMy
+  `+hmmNNNNNNMMMmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNho.
+============== We bleed #F46A1F and #002244 ==============
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The unofficial Fantasy Movie League group for Hope College">
+  <meta name="author" content="Leo Herzog | herzog.tech">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <title>Hope College Unofficial Fantasy Movie League</title>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script defer src="//pro.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js"></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/sandstone/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    @media screen and (min-width: 992px) {
+        h1 {
+            font-size: 8rem;
+        }
+    }
+
+    #allcontent {
+        margin-top: 8vh;
+    }
+
+    .container {
+      margin-bottom: 8vh;
+    }
+
+    .btn {
+      font-size: 110%;
+    }
+    </style>
+
+  <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129696293-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129696293-1');
+  </script>
+
+
+</head>
+
+<body>
+
+  <div class="navbar navbar-expand-lg navbar-dark bg-primary" role="navigation">
+    <a class="navbar-brand mx-auto" href="https://fantasymovieleague.com/league/35725/" target="_blank"><span class="fal fa-film"></span> Hope College Unofficial Fantasy Movie League</a>
+  </div>
+
+  <section id="allcontent" data-type="background">
+
+    <div id="intro" class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">Join our league!</h1>
+        <p class="lead">Fantasy Movie League is like Fantasy Football, but instead of managing a team of players, you manage a movie theater.</p>
+        <p>
+          <ul class="fa-ul lead">
+            <li><span class="fa-li"><span class="fas fa-film"></span></span>You pick what movies are shown on your eight screens every week</li>
+            <li><span class="fa-li"><span class="far fa-money-bill"></span></span>You have a limited weekly budget, so choose movies wisely</li>
+            <li><span class="fa-li"><span class="fas fa-trophy-alt"></span></span>How well your movies do in the weekend box office determines your week's earnings!</li>
+          </ul>
+        </p>
+        <p>
+          <a class="btn btn-primary btn-lg btn-block" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join the League!  <span class="fas fa-external-link"></span></a>
+        </p>
+      </div>
+    </div>
+
+    <div id="thisweek" class="container">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">This Week</div>
+        <div class="card-body">
+          <h4 id="countdown" class="card-title">Calculating remaining time...</h4>
+          <div class="progress">
+            <div id="countdown-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="faq" class="container">
+      <div class="card bg-light mb-3">
+        <div class="card-header">FAQ</div>
+        <div class="card-body">
+          <h4 class="card-title">Who are you?</h4>
+          <p class="card-text">I'm <a class="text-primary" href="https://hope.edu/directory/people/herzog-leo/" target="_blank">Leo Herzog '13</a>. I work at <a class="text-primary" href="https://hope.edu/cit" target="_blank">CIT</a> at Hope.
+            I play Fantasy Movie League with my friends group and thought it would be fun to get a Hope league going.</p>
+          <hr class="my-4">
+          <h4 class="card-title">Who can join <a class="text-primary" href="https://fantasymovieleague.com/league/35725/" target="_blank">the Hope College league?</a></h4>
+          <p class="card-text">Anyone! Faculty, Staff, Students, Alumni, Parents, Friends, whoever. The "join" button above should let you in,
+            but if you have trouble, search for the "Hope College" league. The password is "hopecollege".
+          </p>
+          <hr class="my-4">
+          <h4 class="card-title">What do I win?</h4>
+          <p class="card-text">Glory? I'll definitely put your (appropriate) username and cinema name on this page. Maybe I'll come up with another prize too. I'm not sure yet.</p>
+          <hr class="my-4">
+          <h4 class="card-title">How much does it cost?</h4>
+          <p class="card-text">It's free! An account with <a class="text-primary" href="https://fantasymovieleague.com/aboutus" target="_blank">Fantasy Movie League</a> is all you need to play.</p>
+          <hr class="my-4">
+          <h4 class="card-title">Where can I learn more about how to play?</h4>
+          <p class="card-text">Start with <a class="text-primary" href="https://fantasymovieleague.com/howtoplay" target="_blank">the "How to Play" Guide at fantasymovieleague.com</a>.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+  $(document).ready(function() {
+    tick();
+  });
+
+  function tick() {
+    console.time("Tick");
+    var now = moment().tz('America/Detroit');
+    var open = moment().tz('America/Detroit').day(1).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
+    var deadline = moment().tz('America/Detroit').day(5).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
+    var previousDeadline = moment().tz('America/Detroit').day(-2).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
+    var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
+    
+    // console.log(open.format());
+    // console.log(deadline.format());
+    // console.log(previousDeadline.format());
+    // console.log(nextOpen.format());
+
+    // countdown to the start
+    var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
+    if (now.isBefore(leagueStart)) {
+      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league begins ' + leagueStart.fromNow() + '!');
+      $('#countdown-bar').addClass('bg-success progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+    } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
+      console.log("Choices are locked in");
+      $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
+      $('#countdown-bar').addClass('bg-success').removeClass('progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+    } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
+      console.log("Choices are locked in");
+      $('#countdown').html('<span class="far fa-check"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates</a>.');
+      $('#countdown-bar').addClass('bg-success').removeClass('progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+    } else { // during open period. show countdown.
+      console.log("Counting down to deadline on Friday");
+      $('#countdown').html('<span class="far fa-hourglass-half"></span> Deadline for your picks this week is ' + deadline.fromNow() + '!');
+      var totalTimeOpenWindow = deadline.diff(open);
+      var timeElapsed = now.diff(open);
+      var percentageRemaining = (timeElapsed / totalTimeOpenWindow) * 100;
+      $('#countdown-bar').addClass('progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageRemaining).css('width', percentageRemaining + '%');
+    }
+
+    setTimeout(tick, 1000);
+    console.timeEnd("Tick");
+  }
+  </script>
+
+</body>
+
+</html>
