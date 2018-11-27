@@ -197,7 +197,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     // countdown to the start
     var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
     if (now.isBefore(leagueStart)) {
-      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league begins ' + leagueStart.fromNow() + '!');
+      $('#countdown').html('<span class="far fa-hourglass-half"></span> Winter league starts ' + leagueStart.fromNow() + '! Join now.');
       $('#countdown-bar').addClass('bg-info progress-bar-animated').removeClass('bg-warning bg-success').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
       console.log("Choices are locked in");
