@@ -210,7 +210,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');    
     } else { // during open period. show countdown.
       console.log("Counting down to deadline on Friday");
-      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks this week is Friday at Noon EST. That\'s ' + deadline.from(now) + '!');
+      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks this week is Friday at Noon. That\'s ' + deadline.from(now) + '!');
       var totalTimeOpenWindow = deadline.diff(open);
       var timeElapsed = now.diff(open);
       var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
