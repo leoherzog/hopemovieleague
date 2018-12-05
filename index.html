@@ -200,26 +200,21 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     // console.log(previousDeadline.format());
     // console.log(nextOpen.format());
 
-    // countdown to the start
-    var leagueStart = moment('2018-12-04T01:00:00Z').tz('America/Detroit'); // next Monday at 8pm eastern
-    if (now.isBefore(leagueStart)) {
-      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Winter league starts ' + leagueStart.from(now) + '!  <a class="btn btn-primary" href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank" role="button">Join Now <span class="fas fa-external-link fa-fw"></span></a>');
-      $('#countdown-bar').addClass('bg-info progress-bar-animated').removeClass('bg-warning bg-success').attr('aria-valuenow', 100).css('width', '100%');
-    } else if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
+    if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
       console.log("Choices are locked in");
       $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
-      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
     } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
       console.log("Choices are locked in");
-      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates</a>.');
-      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning bg-info progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');    
+      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! <a href="https://fantasymovieleague.com/league/35725/" target="_blank">Check in with the weekend estimates <span class="fas fa-external-link fa-fw"></span></a>.');
+      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');    
     } else { // during open period. show countdown.
       console.log("Counting down to deadline on Friday");
-      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks this week is ' + deadline.from(now) + '!');
+      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks this week is Friday at Noon EST. That\'s ' + deadline.from(now) + '!');
       var totalTimeOpenWindow = deadline.diff(open);
       var timeElapsed = now.diff(open);
       var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
-      $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success bg-info').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
+      $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
     }
 
     console.timeEnd("Tick");
