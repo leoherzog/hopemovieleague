@@ -217,7 +217,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     } else { // during open period. show countdown.
       console.log("Counting down to deadline on Friday");
       var timeleft = moment.duration(deadline.diff(now));
-      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks is in ' + timeleft.format("d [days], h [hours], m [minutes] [and] s [seconds]") + '!');
+      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks is in ' + timeleft.format({"template": "d [days], h [hours], m [minutes] [and] s [seconds]", "trim": "large mid"}) + '!');
       var totalTimeOpenWindow = deadline.diff(open);
       var timeElapsed = now.diff(open);
       var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
