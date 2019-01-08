@@ -63,6 +63,15 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     .btn-block {
       font-size: 110%;
     }
+
+    #standingsButtons {
+      width: 100%;
+    }
+
+    #lastWeeksStandings,
+    #openStandingsInNewWindow {
+      width: 50%;
+    }
     </style>
 
   <!--[if lt IE 9]>
@@ -124,7 +133,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
     <div id="standings" class="container">
       <div class="card text-white bg-secondary mb-3">
-        <div class="card-header"><span class="far fa-list-ol fa-fw"></span> Current Standings</div>
+        <div class="card-header"><span class="far fa-list-ol fa-fw"></span> This Season's Standings</div>
         <div class="card-body">
           <div class="alert alert-light alert-dismissible fade show">
             <h4 class="alert-heading">Join today!</h4>
@@ -133,6 +142,10 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
           </div>
           <div class="embed-responsive embed-responsive-4by3">
             <iframe class="embed-responsive-item" src="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries"></iframe>
+          </div>
+          <div id="standingsButtons" class="btn-group" role="group">
+            <a id="lastWeeksStandings" target="_blank" type="button" class="btn btn-primary"><span class="fas fa-arrow-to-left fa-fw"></span> Last Week's Results</a>
+            <a id="openStandingsInNewWindow" href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries" target="_blank" type="button" class="btn btn-primary">Open in New Window <span class="fas fa-external-link fa-fw"></span></a>
           </div>
         </div>
       </div>
@@ -196,7 +209,11 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     var open = moment().tz('America/Detroit').day(1).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
     var deadline = moment().tz('America/Detroit').day(5).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
     var previousDeadline = moment().tz('America/Detroit').day(-2).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
-    var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
+    var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern    
+    var firstWeekOfFMLEver = moment('2015-04-21');
+
+    var lastWeeksStandingsUrl = "https://fantasymovieleague.com/league/35725?weekId=" + (now.diff(firstWeekOfFMLEver, 'weeks') - 1); // hope they don't change url schemes lol
+    $('#lastWeeksStandings').attr('href', lastWeeksStandingsUrl);
     
     // console.log(open.format());
     // console.log(deadline.format());
@@ -222,8 +239,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       var timeElapsed = now.diff(open);
       var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
       $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
-      var firstWeekOfFMLEver = moment('2015-04-21');
-      var picksUrl = "https://fantasymovieleague.com/league/16982?weekId=" + now.diff(firstWeekOfFMLEver, 'weeks');
+      var picksUrl = "https://fantasymovieleague.com/league/35725?weekId=" + now.diff(firstWeekOfFMLEver, 'weeks');
       $('#action-button').attr("href", picksUrl).html('Make your picks now <span class="fas fa-external-link fa-fw"></span>').addClass("btn-warning").removeClass("btn-success");
       $('#action-button-container').show();
     }
