@@ -48,12 +48,12 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
   <style>
     @media screen and (min-width: 992px) {
         h1 {
-            font-size: 8rem;
+          font-size: 8rem;
         }
     }
 
     #allcontent {
-        margin-top: 8vh;
+      margin-top: 8vh;
     }
 
     .container {
@@ -144,8 +144,8 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
             <iframe class="embed-responsive-item" src="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries"></iframe>
           </div>
           <div id="standingsButtons" class="btn-group" role="group">
-            <a id="lastWeeksStandings" target="_blank" type="button" class="btn btn-primary"><span class="fas fa-arrow-to-left fa-fw"></span> Last Week's Results</a>
-            <a id="openStandingsInNewWindow" href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries" target="_blank" type="button" class="btn btn-primary">Open in New Window <span class="fas fa-external-link fa-fw"></span></a>
+            <a id="lastWeeksStandings" class="btn btn-primary" target="_blank" role="button"><span class="fas fa-arrow-to-left fa-fw"></span> Last Week's Results</a>
+            <a id="openStandingsInNewWindow" class="btn btn-primary" href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries" target="_blank" role="button">Open in New Window <span class="fas fa-external-link fa-fw"></span></a>
           </div>
         </div>
       </div>
@@ -173,12 +173,12 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
                 <p class="card-text">Either use the website, <a class="text-primary" href="https://fantasymovieleague.com/league/35725" target="_blank">fantasymovieleague.com</a>, or download the mobile app:</p>
               </div>
               <div class="col-lg-2 mb-2">
-                <a href="https://itunes.apple.com/us/app/fantasy-movie-league/id1089244568?mt=8">
+                <a href="https://itunes.apple.com/us/app/fantasy-movie-league/id1089244568?mt=8" role="button">
                   <img alt="Download on the App Store" src="app-store.svg" />
                 </a>
               </div>
               <div class="col-lg-2">
-                <a href="https://play.google.com/store/apps/details?id=com.kinetoplay.fantasymovieleague">
+                <a href="https://play.google.com/store/apps/details?id=com.kinetoplay.fantasymovieleague" role="button">
                   <img alt="Get it on Google Play" src="google-play.svg" />
                 </a>
               </div>
@@ -199,54 +199,54 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
   </section>
 
   <script>
-  $(document).ready(function() {
-    tick();
-  });
+    $(document).ready(function() {
+      tick();
+    });
 
-  function tick() {
-    console.time("Tick");
-    var now = moment().tz('America/Detroit');
-    var open = moment().tz('America/Detroit').day(1).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
-    var deadline = moment().tz('America/Detroit').day(5).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
-    var previousDeadline = moment().tz('America/Detroit').day(-2).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
-    var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern    
-    var firstWeekOfFMLEver = moment('2015-04-21');
+    function tick() {
+      console.time("Tick");
+      var now = moment().tz('America/Detroit');
+      var open = moment().tz('America/Detroit').day(1).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern
+      var deadline = moment().tz('America/Detroit').day(5).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
+      var previousDeadline = moment().tz('America/Detroit').day(-2).hour(12).minute(0).second(0).millisecond(0); // next Friday at noon
+      var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern    
+      var firstWeekOfFMLEver = moment('2015-04-21');
 
-    var lastWeeksStandingsUrl = "https://fantasymovieleague.com/league/35725?weekId=" + (now.diff(firstWeekOfFMLEver, 'weeks') - 1); // hope they don't change url schemes lol
-    $('#lastWeeksStandings').attr('href', lastWeeksStandingsUrl);
-    
-    // console.log(open.format());
-    // console.log(deadline.format());
-    // console.log(previousDeadline.format());
-    // console.log(nextOpen.format());
+      var lastWeeksStandingsUrl = "https://fantasymovieleague.com/league/35725?weekId=" + (now.diff(firstWeekOfFMLEver, 'weeks') - 1); // hope they don't change url schemes lol
+      $('#lastWeeksStandings').attr('href', lastWeeksStandingsUrl);
 
-    if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
-      console.log("Choices are locked in");
-      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
-      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
-      $('#action-button-container').hide();
-    } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
-      console.log("Choices are locked in");
-      $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in!');
-      $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
-      $('#action-button').attr("href", "https://fantasymovieleague.com/league/35725/").html('Check in with the weekend estimates <span class="fas fa-external-link fa-fw"></span>').addClass("btn-success").removeClass("btn-warning");
-      $('#action-button-container').show();
-    } else { // during open period. show countdown.
-      console.log("Counting down to deadline on Friday");
-      var timeleft = moment.duration(deadline.diff(now));
-      $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks is in ' + timeleft.format({"template": "d [days], h [hours], m [minutes] [and] s [seconds]", "trim": "large mid"}) + '!');
-      var totalTimeOpenWindow = deadline.diff(open);
-      var timeElapsed = now.diff(open);
-      var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
-      $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
-      var picksUrl = "https://fantasymovieleague.com/league/35725?weekId=" + now.diff(firstWeekOfFMLEver, 'weeks');
-      $('#action-button').attr("href", picksUrl).html('Make your picks now <span class="fas fa-external-link fa-fw"></span>').addClass("btn-warning").removeClass("btn-success");
-      $('#action-button-container').show();
+      // console.log(open.format());
+      // console.log(deadline.format());
+      // console.log(previousDeadline.format());
+      // console.log(nextOpen.format());
+
+      if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
+        console.log("Choices are locked in");
+        $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
+        $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+        $('#action-button-container').hide();
+      } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
+        console.log("Choices are locked in");
+        $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in!');
+        $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+        $('#action-button').attr("href", "https://fantasymovieleague.com/league/35725/").html('Check in with the weekend estimates <span class="fas fa-external-link fa-fw"></span>').addClass("btn-success").removeClass("btn-warning");
+        $('#action-button-container').show();
+      } else { // during open period. show countdown.
+        console.log("Counting down to deadline on Friday");
+        var timeleft = moment.duration(deadline.diff(now));
+        $('#countdown').html('<span class="far fa-hourglass-half fa-fw"></span> Deadline for your picks is in ' + timeleft.format({ "template": "d [days], h [hours], m [minutes] [and] s [seconds]", "trim": "large mid" }) + '!');
+        var totalTimeOpenWindow = deadline.diff(open);
+        var timeElapsed = now.diff(open);
+        var percentageElapsed = (timeElapsed / totalTimeOpenWindow) * 100;
+        $('#countdown-bar').addClass('bg-warning progress-bar-animated').removeClass('bg-success').attr('aria-valuenow', percentageElapsed).css('width', percentageElapsed + '%');
+        var picksUrl = "https://fantasymovieleague.com/league/35725?weekId=" + now.diff(firstWeekOfFMLEver, 'weeks');
+        $('#action-button').attr("href", picksUrl).html('Make your picks now <span class="fas fa-external-link fa-fw"></span>').addClass("btn-warning").removeClass("btn-success");
+        $('#action-button-container').show();
+      }
+
+      console.timeEnd("Tick");
+      setTimeout(tick, 1000);
     }
-
-    console.timeEnd("Tick");
-    setTimeout(tick, 1000);
-  }
   </script>
 
 </body>
