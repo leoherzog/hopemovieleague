@@ -239,14 +239,20 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
       if (now.isBetween(deadline, nextOpen)) { // if it's *right* after the deadline
         console.log("Choices are locked in");
-        $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
+        $('#countdown').html('<span class="far fa-hourglass-end fa-fw"></span> This week\'s choices are locked in! Stay tuned for the weekend results.');
         $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
         $('#action-button-container').hide();
+      } else if (now.day() == "1" && now.hour() < 20) { // if it's Monday and they're expecting to make this week's choices
+        console.log("This week hasn't opened yet. Starting soon.");
+        $('#countdown').html('<span class="far fa-hourglass-start fa-fw"></span> This week\'s choices open at 8pm!');
+        $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
+        $('#action-button').attr("href", "https://fantasymovieleague.com/league/35725/").html('Check in with last weekend\'s estimates <span class="fas fa-external-link fa-fw"></span>').addClass("btn-success").removeClass("btn-warning");
+        $('#action-button-container').show();
       } else if (now.isBetween(previousDeadline, open)) { // if it's during the weekend closed period
         console.log("Choices are locked in");
-        $('#countdown').html('<span class="far fa-check fa-fw"></span> This week\'s choices are locked in!');
+        $('#countdown').html('<span class="far fa-hourglass-end fa-fw"></span> This week\'s choices are locked in!');
         $('#countdown-bar').addClass('bg-success').removeClass('bg-warning progress-bar-animated').attr('aria-valuenow', 100).css('width', '100%');
-        $('#action-button').attr("href", "https://fantasymovieleague.com/league/35725/").html('Check in with the weekend estimates <span class="fas fa-external-link fa-fw"></span>').addClass("btn-success").removeClass("btn-warning");
+        $('#action-button').attr("href", "https://fantasymovieleague.com/league/35725/").html('Check last weekend\'s estimates <span class="fas fa-external-link fa-fw"></span>').addClass("btn-success").removeClass("btn-warning");
         $('#action-button-container').show();
       } else { // during open period. show countdown.
         console.log("Counting down to deadline on Friday");
