@@ -243,6 +243,8 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern    
       var firstWeekOfFMLEver = moment('2015-04-21');
 
+      open = moment().tz('America/Detroit').day(2).hour(20).minute(0).second(0).millisecond(0); // override this week to Tuesday at 8pm eastern
+
       var lastWeeksStandingsUrl = "https://fantasymovieleague.com/league/35725?weekId=" + (now.diff(firstWeekOfFMLEver, 'weeks') - 1); // hope they don't change url schemes lol
       $('#lastWeeksStandings').attr('href', lastWeeksStandingsUrl);
 
