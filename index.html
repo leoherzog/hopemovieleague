@@ -230,10 +230,6 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
   </section>
 
   <script>
-    $(document).ready(function() {
-      tick();
-    });
-
     function tick() {
       console.time("Tick");
       var now = moment().tz('America/Detroit');
@@ -284,8 +280,10 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       }
 
       console.timeEnd("Tick");
-      setTimeout(tick, 1000);
     }
+    
+    tick();
+    setInterval(tick, 1000);
   </script>
 
 </body>
