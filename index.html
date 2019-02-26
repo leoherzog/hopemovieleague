@@ -47,9 +47,9 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
   <style>
     @media screen and (min-width: 992px) {
-        h1 {
-          font-size: 8rem;
-        }
+      h1 {
+        font-size: 8rem;
+      }
     }
 
     p {
@@ -85,7 +85,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
     #openStandingsInNewWindow {
       width: 50%;
     }
-    </style>
+  </style>
 
   <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -112,14 +112,15 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
   <section id="allcontent" data-type="background">
 
-    <!-- <div id="lastseasonwinner" class="container">
+    <div id="lastseasonwinner" class="container">
       <div class="alert alert-dismissible alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h2><span class="far fa-medal fa-fw"></span> Congratulations @username!</h2>
-        <h5>Winner of the 2019 Awards Season! <a href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries" target="_blank">See the full results</a>.</h5>
+        <h2><span class="far fa-medal fa-fw"></span> Congratulations <a href="https://fantasymovieleague.com/u/zaskeu" target="_blank">@Zaskeu</a>!</h2>
+        <h5><strong>Big Doink's Amish Theater</strong> is the winner of <a href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=2" target="_blank">the 2019 Awards Season</a>! The trophy has been printed and is now being customized.</h5>
+        <hr />
         <h5>The Spring 2019 season is now open!</h5>
       </div>
-    </div> -->
+    </div>
 
     <!-- <div id="longweekend" class="container">
       <div class="alert alert-dismissible alert-warning">
@@ -129,16 +130,6 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
         <p>This week's pick opens Tuesday. More information is available on <a href="https://fantasymovieleague.com/chatter/board/fml-main-chatter/topic/579688" target="_blank">the Fantasy Movie League website</a>.</p>
       </div>
     </div> -->
-    
-    
-    <div id="longweekend" class="container">
-      <div class="alert alert-dismissible alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4 class="alert-heading">Last week in Awards 2019 season!</h4>
-        <p>This weekend, Feb 22-24, is the final week of the first Fantasy Movie League season at Hope College.</p>
-        <p>If you haven't joined yet, now is the perfect time to get started and practice before the Spring season starts next week. <a href="https://fantasymovieleague.com/league/35725/join?mp=1ef67efbb1457367392e3a10572cb748" target="_blank">Join today</a>!</p>
-      </div>
-    </div>
 
     <div id="intro" class="container">
       <div class="jumbotron">
@@ -188,14 +179,14 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
           <div class="alert alert-light alert-dismissible fade show">
             <h4 class="alert-heading">Join today!</h4>
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            This season is wrapping up, and now is the perfect time for you to join us. It's free, and fun!
+            The Spring 2019 has just begun. It's free, and fun!
           </div>
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries"></iframe>
+            <iframe class="embed-responsive-item" src="https://fantasymovieleague.com/league/35725?contestId=1&periodId=3#league-entries"></iframe>
           </div>
           <div id="standingsButtons" class="btn-group" role="group">
             <a id="lastWeeksStandings" class="btn btn-primary" target="_blank" role="button"><span class="fas fa-arrow-to-left fa-fw"></span> Last Week's Results</a>
-            <a id="openStandingsInNewWindow" class="btn btn-primary" href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=4#league-entries" target="_blank" role="button">Open in New Window <span class="fas fa-external-link fa-fw"></span></a>
+            <a id="openStandingsInNewWindow" class="btn btn-primary" href="https://fantasymovieleague.com/league/35725?contestId=1&periodId=3#league-entries" target="_blank" role="button">Open in New Window <span class="fas fa-external-link fa-fw"></span></a>
           </div>
         </div>
       </div>
@@ -258,7 +249,7 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
       var nextOpen = moment().tz('America/Detroit').day(8).hour(20).minute(0).second(0).millisecond(0); // next Monday at 8pm eastern    
       var firstWeekOfFMLEver = moment('2015-04-21');
 
-      // open = moment().tz('America/Detroit').day(2).hour(20).minute(0).second(0).millisecond(0); // override this week to Tuesday at 8pm eastern
+      //open = moment().tz('America/Detroit').day(2).hour(20).minute(0).second(0).millisecond(0); // override this week to Tuesday at 8pm eastern
 
       var lastWeeksStandingsUrl = "https://fantasymovieleague.com/league/35725?weekId=" + (now.diff(firstWeekOfFMLEver, 'weeks') - 1); // hope they don't change url schemes lol
       $('#lastWeeksStandings').attr('href', lastWeeksStandingsUrl);
@@ -300,7 +291,6 @@ yM-  `hMMMMMMMMMMMMMMMMMmmMMMMMd/`          /MM+         oMy
 
       console.timeEnd("Tick");
     }
-    
     tick();
     setInterval(tick, 1000);
   </script>
